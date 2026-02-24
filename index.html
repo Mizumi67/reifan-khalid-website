@@ -3,664 +3,412 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reifan Khalid Website</title>
+  <title>Reifan Khalid — IT Specialist</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- Binary rain canvas — OUTSIDE intro-screen so CSS on intro won't freeze it -->
-  <canvas id="binaryCanvas"></canvas>
 
-  <!-- ═══════════════════════════════════════════
-       INTRO SCREEN
-  ═══════════════════════════════════════════ -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- SVG gradient defs for skill rings -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden;">
+    <defs>
+      <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f5dfa0"/>
+        <stop offset="100%" stop-color="#c8a050"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- INTRO SCREEN -->
   <div id="intro-screen">
+    <canvas id="binaryCanvas"></canvas>
     <div class="intro-inner">
+      <div class="intro-line"></div>
       <div id="intro-hello">Hello</div>
       <div id="intro-subtitle">This website is created to promote my Digital &amp; IT Skills</div>
-      <div class="intro-bar"></div>
+      <div class="intro-line"></div>
+
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       LIGHTBOX (shared for certs and projects)
-  ═══════════════════════════════════════════ -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
     <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
     <div class="lightbox-panel">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
       <div class="lightbox-img-wrap">
         <img id="lightboxImg" src="" alt="Preview" />
-        <video id="lightboxVideo" controls playsinline style="display:none;width:100%;border-radius:12px;background:#000;max-height:70vh;"></video>
+        <video id="lightboxVideo" controls playsinline style="display:none;width:100%;background:#000;max-height:72vh;"></video>
       </div>
       <div class="lightbox-footer" id="lightboxFooter"></div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       NAVIGATION
-  ═══════════════════════════════════════════ -->
+  <!-- NAVIGATION -->
   <header id="navbar">
-    <div class="nav-container">
+    <div class="nav-top-line"></div>
+    <div class="nav-inner">
       <a href="#home" class="nav-logo">
-        Reifan Khalid
+        <span class="nav-logo-bracket">[</span>
+        <span class="nav-logo-text">REIFAN KHALID</span>
+        <span class="nav-logo-bracket">]</span>
       </a>
-      <nav class="nav-links">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle Light/Dark Mode">
-          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#certificates" class="nav-link">Certificates</a>
-        <a href="#contact" class="nav-link">Contact</a>
+      <nav class="nav-center">
+        <a href="#home"         class="nav-item active"><span class="nav-item-dot"></span><span class="nav-item-text">Home</span></a>
+        <div class="nav-sep"></div>
+        <a href="#about"        class="nav-item"><span class="nav-item-dot"></span><span class="nav-item-text">About</span></a>
+        <div class="nav-sep"></div>
+        <a href="#skills"       class="nav-item"><span class="nav-item-dot"></span><span class="nav-item-text">Skills</span></a>
+        <div class="nav-sep"></div>
+        <a href="#projects"     class="nav-item"><span class="nav-item-dot"></span><span class="nav-item-text">Projects</span></a>
+        <div class="nav-sep"></div>
+        <a href="#certificates" class="nav-item"><span class="nav-item-dot"></span><span class="nav-item-text">Certificates</span></a>
+        <div class="nav-sep"></div>
+        <a href="#contact"      class="nav-item"><span class="nav-item-dot"></span><span class="nav-item-text">Contact</span></a>
       </nav>
       <div class="nav-right">
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="icon-sun"  width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
+    <div class="nav-bottom-line"></div>
   </header>
 
-  <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobileDrawer">
-    <a href="#home" class="mobile-link">Home</a>
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#skills" class="mobile-link">Skills</a>
-    <a href="#projects" class="mobile-link">Projects</a>
-    <a href="#certificates" class="mobile-link">Certificates</a>
-    <a href="#contact" class="mobile-link">Contact</a>
+    <div class="mobile-drawer-inner">
+      <a href="#home"         class="mobile-link">Home</a>
+      <a href="#about"        class="mobile-link">About</a>
+      <a href="#skills"       class="mobile-link">Skills</a>
+      <a href="#projects"     class="mobile-link">Projects</a>
+      <a href="#certificates" class="mobile-link">Certificates</a>
+      <a href="#contact"      class="mobile-link">Contact</a>
+    </div>
   </div>
 
   <main>
 
-    <!-- ═══════════════════════════════════════════
-         HOME / HERO SECTION — About-style layout
-    ═══════════════════════════════════════════ -->
-    <section id="home" class="hero-section">
-      <div class="hero-bg-grid"></div>
-      <div class="hero-glow"></div>
-      <div class="container hero-container">
-
-        <!-- LEFT: Text content -->
-        <div class="hero-text">
-          <div class="section-label reveal">Personal Skills</div>
+    <!-- HERO -->
+    <section id="home" class="section-hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-body">
+        <div class="hero-content-left">
           <h1 class="hero-headline reveal">
-            Hi, I'm <span class="headline-accent">Reifan Khalid.</span><br />
-            IT Specialist.
+            <span class="hero-hi">Hi, I'm</span>
+            <span class="hero-fullname">Reifan Khalid<span class="hero-dot">.</span></span>
+            <span class="hero-role-sub">IT Specialist.</span>
           </h1>
-          <p class="hero-sub reveal">
+          <p class="hero-desc reveal">
             I am an Information Technology student with an interest in web development,
             digital content, and basic multimedia. I have experience in creating simple websites,
             basic animations, light video editing, and selling digital products.
             I am eager to learn, adaptable, and motivated to grow in the IT field.
           </p>
           <div class="hero-chips reveal">
-            <span class="chip">Web Development</span>
-            <span class="chip">Animation</span>
-            <span class="chip">Video Editing</span>
+            <span class="ww-chip">Web Development</span>
+            <span class="ww-chip">Animation</span>
+            <span class="ww-chip">Video Editing</span>
           </div>
-          <div class="hero-cta reveal">
-            <a href="#about" class="btn btn-ghost">Let's Start</a>
+          <div class="hero-actions reveal">
+            <a href="#about" class="ww-btn ww-btn-primary">Let's Start</a>
           </div>
         </div>
 
-        <!-- RIGHT: Profile Photo Card (floating) -->
-        <div class="hero-photo-wrap reveal">
-          <div class="hero-photo-card">
-            <img src="assets/photo.png" alt="Reifan Khalid" />
-          </div>
-          <!-- Floating accent dots -->
-          <div class="photo-dot photo-dot-1"></div>
-          <div class="photo-dot photo-dot-2"></div>
-        </div>
 
       </div>
-      <div class="hero-scroll-hint">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
+
+      <div class="hero-stats reveal">
+        <div class="hero-stat"><span class="stat-val">SMK Harapan Utama</span><span class="stat-key">School</span></div>
+        <div class="hero-stat"><span class="stat-val">Batam, Indonesia</span><span class="stat-key">Location</span></div>
+        <div class="hero-stat"><span class="stat-val">Web &amp; Digital</span><span class="stat-key">Focus</span></div>
+        <div class="hero-stat"><span class="stat-val">IT Student</span><span class="stat-key">Status</span></div>
+        <div class="hero-stat"><span class="stat-val">ID / EN / JP</span><span class="stat-key">Languages</span></div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span class="scroll-label">SCROLL</span>
+        <div class="scroll-bar"></div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         ABOUT SECTION
-    ═══════════════════════════════════════════ -->
-    <section id="about" class="about-section">
-      <div class="container">
+    <!-- ABOUT -->
+    <section id="about" class="ww-section">
+      <div class="ww-container" data-ghost="ABOUT">
+        <div class="ww-section-head reveal">
+          <div class="ww-line"></div>
+          <div class="ww-section-label">01 — ABOUT ME</div>
+          <div class="ww-line"></div>
+        </div>
+        <h2 class="ww-section-title reveal">About <em>Me</em></h2>
         <div class="about-grid">
-          <div class="about-left reveal">
-            <h2 class="section-title about-big-title">01 — <span class="text-accent">About Me</span></h2>
-
-            <p class="about-text">
+          <div class="about-photo-col reveal">
+            <div class="about-photo-wrap">
+              <div class="about-photo-frame">
+                <img src="assets/photo.png" alt="Reifan Khalid" />
+                <div class="photo-frame-tl"></div>
+                <div class="photo-frame-br"></div>
+                <div class="photo-scanline"></div>
+              </div>
+            </div>
+            <div class="about-info-card">
+              <div class="about-info-row"><span class="ainfo-key">Status</span><span class="ainfo-val">IT Student</span></div>
+              <div class="about-info-row"><span class="ainfo-key">School</span><span class="ainfo-val">SMK Harapan Utama</span></div>
+              <div class="about-info-row"><span class="ainfo-key">Location</span><span class="ainfo-val">Batam, Indonesia</span></div>
+              <div class="about-info-row"><span class="ainfo-key">Focus</span><span class="ainfo-val">Web &amp; Digital</span></div>
+              <div class="about-info-row"><span class="ainfo-key">Available</span><span class="ainfo-val"><span class="live-dot"></span>Open to Work</span></div>
+              <div class="about-info-row"><span class="ainfo-key">Languages</span><span class="ainfo-val">ID / EN / JP</span></div>
+            </div>
+          </div>
+          <div class="about-text-col reveal">
+            <p class="about-p">
               I am a vocational IT student at <strong>SMK Harapan Utama</strong>, Batam, Kepulauan Riau, Indonesia.
               My major focuses on information technology — including computer systems, hardware, software, and networking.
               Through my studies, I have gained both knowledge and real hands-on experience. I also enjoy working with
               others, and I often collaborate with classmates on school projects that need good teamwork and communication.
               As part of my training, I have even installed operating systems like <strong>Windows</strong> and <strong>Linux</strong> on my own.
             </p>
-
-            <p class="about-text">
+            <p class="about-p">
               Outside of school, I spend a lot of my free time building creative skills on my own. I love visual art and animation —
               I enjoy drawing and have been teaching myself digital animation to bring ideas to life.
               Video editing is something I started exploring back in <strong>elementary school (Grade 6)</strong>,
-              and I have kept improving ever since, trying to make each video better than the last.
+              and I have kept improving ever since.
             </p>
-
-            <p class="about-text">
+            <p class="about-p">
               I have also tried <strong>digital content creation</strong> by making and uploading videos to social media.
-              This helped me learn how to tell stories through video, understand what viewers enjoy, and stay consistent
-              with creating content — all of which go well with my video editing skills.
-              On top of that, I am currently learning the <strong>Japanese language</strong>, which I started in mid-2025,
-              and I am still working on it as part of my personal growth.
+              On top of that, I am currently learning the <strong>Japanese language</strong>, which I started in mid-2025.
             </p>
-
-            <div class="about-skills-chips">
-              <span class="chip">Web Development</span>
-              <span class="chip">Animation</span>
-              <span class="chip">Video Editing</span>
+            <div class="about-tags">
+              <span class="ww-chip">Web Development</span>
+              <span class="ww-chip">Animation</span>
+              <span class="ww-chip">Video Editing</span>
             </div>
-            <div class="about-resume">
-              <a href="assets/resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                View My Resume
-              </a>
-              <span class="resume-note">Opens as PDF</span>
-            </div>
-          </div>
-          <div class="about-right reveal">
-            <div class="about-info-card">
-              <div class="info-row">
-                <span class="info-key">Status</span>
-                <span class="info-val">IT Student</span>
-              </div>
-              <div class="info-row">
-                <span class="info-key">School</span>
-                <span class="info-val">SMK Harapan Utama</span>
-              </div>
-              <div class="info-row">
-                <span class="info-key">Location</span>
-                <span class="info-val">Batam, Indonesia</span>
-              </div>
-              <div class="info-row">
-                <span class="info-key">Focus</span>
-                <span class="info-val">Web &amp; Digital</span>
-              </div>
-              <div class="info-row">
-                <span class="info-key">Available</span>
-                <span class="info-val status-available">Open to Work</span>
-              </div>
-              <div class="info-row">
-                <span class="info-key">Languages</span>
-                <span class="info-val">ID / EN / JP</span>
-              </div>
+            <div class="about-actions">
+              <a href="assets/resume.pdf" class="ww-btn ww-btn-primary" target="_blank" rel="noopener">View My Resume</a>
+              <span class="opens-as">Opens as PDF</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         SKILLS SECTION
-    ═══════════════════════════════════════════ -->
-    <section id="skills" class="skills-section">
-      <div class="container">
-        <div class="section-label reveal">02 — Skills</div>
-        <div class="section-header reveal">
-          <h2 class="section-title">My <span class="text-accent">Skills</span></h2>
-          <p class="section-desc">Here are the skills I have built up over time. Hover over any skill to see my level.</p>
+    <!-- SKILLS -->
+    <section id="skills" class="ww-section ww-section-alt">
+      <div class="ww-container" data-ghost="SKILLS">
+        <div class="ww-section-head reveal">
+          <div class="ww-line"></div>
+          <div class="ww-section-label">02 — SKILLS</div>
+          <div class="ww-line"></div>
+        </div>
+        <h2 class="ww-section-title reveal">My <em>Skills</em></h2>
+        <p class="ww-section-desc reveal">Here are the skills I have built up over time. Hover over any skill to see my level.</p>
+
+        <div class="skills-cat reveal"><div class="skills-cat-title"><span class="ww-diamond">◆</span> Professional Skills</div></div>
+        <div class="skills-rings reveal">
+          <div class="ring-item" data-pct="80"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:80"/></svg><span class="ring-num">80%</span></div><span class="ring-label">Basic Website<br/>Development</span></div>
+          <div class="ring-item" data-pct="80"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:80"/></svg><span class="ring-num">80%</span></div><span class="ring-label">Digital Content<br/>Creation</span></div>
+          <div class="ring-item" data-pct="90"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:90"/></svg><span class="ring-num">90%</span></div><span class="ring-label">Basic<br/>Animation</span></div>
+          <div class="ring-item" data-pct="90"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:90"/></svg><span class="ring-num">90%</span></div><span class="ring-label">Video<br/>Editing</span></div>
+          <div class="ring-item" data-pct="85"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:85"/></svg><span class="ring-num">85%</span></div><span class="ring-label">Basic Multimedia<br/>Tools</span></div>
         </div>
 
-                <div class="skills-grid reveal">
-
-          <!-- Professional Skills — LEFT -->
-          <div class="skills-column">
-            <h3 class="skills-col-title">Professional Skills</h3>
-            <div class="skill-item skill-card" data-pct="80">
-              <div class="skill-name">
-                <span>Basic Website Development</span>
-                <span class="skill-pct">80%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 80%"></div>
-              </div>
-            </div>
-            <div class="skill-item skill-card" data-pct="80">
-              <div class="skill-name">
-                <span>Digital Content Creation</span>
-                <span class="skill-pct">80%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 80%"></div>
-              </div>
-            </div>
-            <div class="skill-item skill-card" data-pct="90">
-              <div class="skill-name">
-                <span>Basic Animation</span>
-                <span class="skill-pct">90%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 90%"></div>
-              </div>
-            </div>
-            <div class="skill-item skill-card" data-pct="90">
-              <div class="skill-name">
-                <span>Video Editing</span>
-                <span class="skill-pct">90%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 90%"></div>
-              </div>
-            </div>
-            <div class="skill-item skill-card" data-pct="85">
-              <div class="skill-name">
-                <span>Basic Multimedia Tools</span>
-                <span class="skill-pct">85%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 85%"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Personal Skills — RIGHT -->
-          <div class="skills-column">
-            <h3 class="skills-col-title">Personal Skills</h3>
-            <div class="skill-item skill-card" data-pct="85">
-              <div class="skill-name">
-                <span>Communication</span>
-                <span class="skill-pct">85%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 85%"></div>
-              </div>
-            </div>
-            <div class="skill-item skill-card" data-pct="90">
-              <div class="skill-name">
-                <span>Creativity</span>
-                <span class="skill-pct">90%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 90%"></div>
-              </div>
-            </div>
-            <div class="skill-item skill-card" data-pct="85">
-              <div class="skill-name">
-                <span>Adaptability</span>
-                <span class="skill-pct">85%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 85%"></div>
-              </div>
-            </div>
-            <div class="skill-item skill-card" data-pct="88">
-              <div class="skill-name">
-                <span>Teamwork</span>
-                <span class="skill-pct">88%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 88%"></div>
-              </div>
-            </div>
-            <div class="skill-item skill-card" data-pct="90">
-              <div class="skill-name">
-                <span>Time Management</span>
-                <span class="skill-pct">90%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" style="--fill: 90%"></div>
-              </div>
-            </div>
-          </div>
-
+        <div class="skills-cat reveal" style="margin-top:48px;"><div class="skills-cat-title"><span class="ww-diamond">◆</span> Personal Skills</div></div>
+        <div class="skills-rings reveal">
+          <div class="ring-item" data-pct="85"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:85"/></svg><span class="ring-num">85%</span></div><span class="ring-label">Communication</span></div>
+          <div class="ring-item" data-pct="90"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:90"/></svg><span class="ring-num">90%</span></div><span class="ring-label">Creativity</span></div>
+          <div class="ring-item" data-pct="85"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:85"/></svg><span class="ring-num">85%</span></div><span class="ring-label">Adaptability</span></div>
+          <div class="ring-item" data-pct="88"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:88"/></svg><span class="ring-num">88%</span></div><span class="ring-label">Teamwork</span></div>
+          <div class="ring-item" data-pct="90"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" style="--pct:90"/></svg><span class="ring-num">90%</span></div><span class="ring-label">Time<br/>Management</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         PROJECTS SECTION
-    ═══════════════════════════════════════════ -->
-    <section id="projects" class="projects-section">
-      <div class="container">
-        <div class="section-label reveal">03 — Project Experience</div>
-        <div class="section-header reveal">
-          <h2 class="section-title">Project <span class="text-accent">Experience</span></h2>
-          <p class="section-desc">A collection of projects I have worked on — from school assignments to personal builds — some of which are still ongoing.</p>
+    <!-- PROJECTS -->
+    <section id="projects" class="ww-section">
+      <div class="ww-container" data-ghost="WORKS">
+        <div class="ww-section-head reveal">
+          <div class="ww-line"></div>
+          <div class="ww-section-label">03 — PROJECTS</div>
+          <div class="ww-line"></div>
         </div>
-        <div class="projects-grid">
+        <h2 class="ww-section-title reveal">Project <em>Experience</em></h2>
+        <p class="ww-section-desc reveal">A collection of projects I have worked on — from school assignments to personal builds.</p>
 
-          <!-- PROJECT 1 — Top Left — lightbox + View Website -->
-          <div class="project-card reveal" data-delay="0">
-            <div class="project-preview clickable-preview"
-                 data-img="assets/project1.png"
-                 data-website="https://mizumi67.github.io/-/">
-              <img src="assets/project1.png" alt="Project 1" class="project-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="preview-fallback" style="display:none">
-                <svg width="38" height="38" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="var(--accent)" stroke-width="1.5"/><path d="M4 14h32" stroke="var(--accent)" stroke-width="1.5"/></svg>
-                <span>project1.png</span>
-              </div>
-              <div class="preview-overlay">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Japanese Learning Website</h3>
-              <p class="project-desc">A personal web project built to help people learn Japanese more easily. Since I am also studying the language myself, I created this site to support learners — and to promote my Japanese e-book as well.</p>
+        <div class="proj-featured reveal">
+          <div class="proj-feat-img clickable-preview" data-img="assets/project1.png" data-website="https://mizumi67.github.io/-/">
+            <img src="assets/project1.png" alt="Project 1" />
+            <span class="proj-num-sm">01</span>
+            <div class="proj-hover-overlay"><span>View Project</span></div>
+          </div>
+          <div class="proj-feat-body">
+            <h3 class="proj-title">Japanese Learning Website</h3>
+            <p class="proj-desc">A personal web project built to help people learn Japanese more easily. Since I am also studying the language myself, I created this site to support learners — and to promote my Japanese e-book as well.</p>
+            <div class="proj-tags">
+              <span class="ww-chip small">HTML</span>
+              <span class="ww-chip small">CSS</span>
+              <span class="ww-chip small">JavaScript</span>
             </div>
           </div>
+        </div>
 
-          <!-- PROJECT 2 — Top Center — lightbox only, no View Website -->
-          <div class="project-card reveal" data-delay="1">
-            <div class="project-preview clickable-preview" data-img="assets/project2.png">
-              <img src="assets/project2.png" alt="Project 2" class="project-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="preview-fallback" style="display:none">
-                <svg width="38" height="38" viewBox="0 0 40 40" fill="none"><rect x="6" y="6" width="28" height="28" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M6 16h28M16 6v28" stroke="var(--accent)" stroke-width="1.5"/></svg>
-                <span>project2.png</span>
-              </div>
-              <div class="preview-overlay">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </div>
+        <div class="proj-grid">
+          <div class="proj-card reveal" data-delay="1">
+            <div class="proj-card-img clickable-preview" data-img="assets/project2.png">
+              <img src="assets/project2.png" alt="Project 2" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="proj-hover-overlay"><span>View</span></div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">SMK Harapan Utama School Website</h3>
-              <p class="project-desc">A school assignment where we were tasked with building a fully functional website connected to a database using XAMPP and SQL. I chose to create an official-style website for SMK Harapan Utama.</p>
+            <div class="proj-card-body">
+              <span class="proj-num-sm">02</span>
+              <h3 class="proj-title">SMK Harapan Utama Website</h3>
+              <p class="proj-desc">A school assignment — a fully functional website connected to a database using XAMPP and SQL.</p>
             </div>
           </div>
-
-          <!-- PROJECT 3 — Top Right — lightbox + View Website -->
-          <div class="project-card reveal" data-delay="2">
-            <div class="project-preview clickable-preview"
-                 data-img="assets/project3.png"
-                 data-website="https://mizumi67.github.io/MisDown/">
-              <img src="assets/project3.png" alt="Project 3" class="project-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="preview-fallback" style="display:none">
-                <svg width="38" height="38" viewBox="0 0 40 40" fill="none"><path d="M20 6L34 14v12L20 34 6 26V14L20 6z" stroke="var(--accent)" stroke-width="1.5" fill="none"/></svg>
-                <span>project3.png</span>
-              </div>
-              <div class="preview-overlay">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </div>
+          <div class="proj-card reveal" data-delay="2">
+            <div class="proj-card-img clickable-preview" data-img="assets/project3.png" data-website="https://mizumi67.github.io/MisDown/">
+              <img src="assets/project3.png" alt="Project 3" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="proj-hover-overlay"><span>View</span></div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Free Game Download Website</h3>
-              <p class="project-desc">A personal project built as a platform where anyone can download a Steam game for free. The site is open to the public and was created purely out of interest and as a hands-on web development exercise.</p>
+            <div class="proj-card-body">
+              <span class="proj-num-sm">03</span>
+              <h3 class="proj-title">Free Game Download Website</h3>
+              <p class="proj-desc">A personal project — a platform where anyone can download a Steam game for free.</p>
             </div>
           </div>
-
-          <!-- PROJECT 4 — Bottom Left — lightbox only -->
-          <div class="project-card reveal" data-delay="3">
-            <div class="project-preview clickable-preview" data-img="assets/project4.png">
-              <img src="assets/project4.png" alt="Project 4" class="project-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="preview-fallback" style="display:none">
-                <svg width="38" height="38" viewBox="0 0 40 40" fill="none"><rect x="8" y="12" width="24" height="16" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M16 12V10M24 12V10" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <span>project4.png</span>
-              </div>
-              <div class="preview-overlay">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </div>
+          <div class="proj-card reveal" data-delay="3">
+            <div class="proj-card-img clickable-preview" data-img="assets/project4.png">
+              <img src="assets/project4.png" alt="Project 4" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="proj-hover-overlay"><span>View</span></div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">SFM Animation Project</h3>
-              <p class="project-desc">An ongoing personal project where I am learning how to create animations using Source Filmmaker (SFM). This includes understanding character rigging, camera work, and basic animation principles within the software.</p>
+            <div class="proj-card-body">
+              <span class="proj-num-sm">04</span>
+              <h3 class="proj-title">SFM Animation Project</h3>
+              <p class="proj-desc">Learning to create animations using Source Filmmaker — character rigging, camera work, and animation principles.</p>
             </div>
           </div>
-
-          <!-- PROJECT 5 — Bottom Center — VIDEO player -->
-          <div class="project-card reveal" data-delay="4">
-            <div class="project-preview clickable-preview video-preview"
-                 data-video="assets/project5-demo.mp4"
-                 data-img="assets/project5-thumb.png">
-              <img src="assets/project5-thumb.png" alt="Video Production Project" class="project-thumb" />
-              <!-- Play button overlay -->
-              <div class="preview-overlay video-play-overlay">
-                <div class="play-btn-circle">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <polygon points="6,4 20,12 6,20" fill="white"/>
-                  </svg>
-                </div>
+          <div class="proj-card reveal" data-delay="4">
+            <div class="proj-card-img clickable-preview video-preview" data-video="assets/project5-demo.mp4" data-img="assets/project5-thumb.png">
+              <img src="assets/project5-thumb.png" alt="Project 5" />
+              <div class="proj-hover-overlay video-hover">
+                <div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><polygon points="6,4 20,12 6,20" fill="white"/></svg></div>
               </div>
-              <!-- Video badge -->
-              <div class="video-badge">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
-                  <polygon points="5,3 19,12 5,21" fill="currentColor"/>
-                </svg>
-                VIDEO
-              </div>
+              <div class="video-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg> VIDEO</div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">School Animation Project</h3>
-              <p class="project-desc">A Bahasa Indonesia class assignment where our group was tasked with creating a negotiation-themed animation. This video is only a short sample of the full project.</p>
+            <div class="proj-card-body">
+              <span class="proj-num-sm">05</span>
+              <h3 class="proj-title">School Animation Project</h3>
+              <p class="proj-desc">A Bahasa Indonesia class assignment — a negotiation-themed animation. Short sample of the full project.</p>
             </div>
           </div>
-
-          <!-- PROJECT 6 — Bottom Right — lightbox only -->
-          <div class="project-card reveal" data-delay="5">
-            <div class="project-preview clickable-preview" data-img="assets/project6.png">
-              <img src="assets/project6.png" alt="Project 6" class="project-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="preview-fallback" style="display:none">
-                <svg width="38" height="38" viewBox="0 0 40 40" fill="none"><rect x="6" y="10" width="28" height="20" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M6 30l8-8 6 6 4-4 8 6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>project6.png</span>
-              </div>
-              <div class="preview-overlay">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </div>
+          <div class="proj-card proj-card-wide reveal" data-delay="5">
+            <div class="proj-card-img clickable-preview" data-img="assets/project6.png">
+              <img src="assets/project6.png" alt="Project 6" onerror="this.parentElement.classList.add('no-img')" />
+              <div class="proj-hover-overlay"><span>View</span></div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">3D Character Modelling</h3>
-              <p class="project-desc">A personal learning project focused on 3D character creation using Blender. I am exploring how to apply textures, rig character bones, and control individual body parts to build a solid foundation in 3D modelling.</p>
+            <div class="proj-card-body">
+              <span class="proj-num-sm">06</span>
+              <h3 class="proj-title">3D Character Modelling</h3>
+              <p class="proj-desc">A personal learning project — 3D character creation using Blender. Exploring textures, bone rigging, and body part control to build a solid foundation in 3D modelling.</p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         CERTIFICATES SECTION
-    ═══════════════════════════════════════════ -->
-    <section id="certificates" class="certificates-section">
-      <div class="container">
-        <div class="section-label reveal">04 — Certificates</div>
-        <div class="section-header reveal">
-          <h2 class="section-title">My <span class="text-accent">Certificates</span></h2>
-          <p class="section-desc">A collection of certificates I have earned through training, workshops, and school activities. Click any certificate to view it in full size.</p>
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="ww-section ww-section-alt">
+      <div class="ww-container" data-ghost="CERTS">
+        <div class="ww-section-head reveal">
+          <div class="ww-line"></div>
+          <div class="ww-section-label">04 — CERTIFICATES</div>
+          <div class="ww-line"></div>
         </div>
-        <div class="certs-grid">
+        <h2 class="ww-section-title reveal">My <em>Certificates</em></h2>
+        <p class="ww-section-desc reveal">A collection of certificates I have earned. Click any to view in full size.</p>
 
-          <!-- CERT 1 -->
-          <div class="cert-card reveal" data-delay="0" data-img="assets/cert1.png">
-            <div class="cert-img-wrap">
-              <img src="assets/cert1.png" alt="Certificate 1" class="cert-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="cert-img-fallback" style="display:none">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="14" r="8" stroke="var(--accent)" stroke-width="1.5"/><path d="M10 22l-4 8 10-4 10 4-4-8" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                <p>cert1.png</p>
-              </div>
-              <div class="cert-overlay">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <span>View Full Size</span>
-              </div>
-            </div>
-            <div class="cert-body">
-              <h3 class="cert-title">Certificate of Competence — Junior Office Operator</h3>
-            </div>
+        <div class="certs-list">
+          <div class="cert-row reveal" data-delay="0" data-img="assets/cert1.png">
+            <div class="cert-num">01</div>
+            <div class="cert-thumb-wrap"><img src="assets/cert1.png" alt="Cert 1" /><div class="cert-hover-overlay"><span>View</span></div></div>
+            <div class="cert-info"><h3 class="cert-title">Certificate of Competence — Junior Office Operator</h3><span class="cert-tag">Official</span></div>
+            <div class="cert-arrow">→</div>
           </div>
-
-          <!-- CERT 2 -->
-          <div class="cert-card reveal" data-delay="1" data-img="assets/cert2.png">
-            <div class="cert-img-wrap">
-              <img src="assets/cert2.png" alt="Certificate 2" class="cert-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="cert-img-fallback" style="display:none">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="3" stroke="var(--accent)" stroke-width="1.5"/><path d="M10 16l4 4 8-8" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <p>cert2.png</p>
-              </div>
-              <div class="cert-overlay">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <span>View Full Size</span>
-              </div>
-            </div>
-            <div class="cert-body">
-              <h3 class="cert-title">Fiber Optic Network Training — PT. Batam Bintan Telekomunikasi</h3>
-            </div>
+          <div class="cert-row reveal" data-delay="1" data-img="assets/cert2.png">
+            <div class="cert-num">02</div>
+            <div class="cert-thumb-wrap"><img src="assets/cert2.png" alt="Cert 2" /><div class="cert-hover-overlay"><span>View</span></div></div>
+            <div class="cert-info"><h3 class="cert-title">Fiber Optic Network Training — PT. Batam Bintan Telekomunikasi</h3><span class="cert-tag">Training</span></div>
+            <div class="cert-arrow">→</div>
           </div>
-
-          <!-- CERT 3 -->
-          <div class="cert-card reveal" data-delay="2" data-img="assets/cert3.png">
-            <div class="cert-img-wrap">
-              <img src="assets/cert3.png" alt="Certificate 3" class="cert-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="cert-img-fallback" style="display:none">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4l3.09 9.26L28 13l-7.27 5.91L22.18 28 16 22.54 9.82 28l2.45-9.09L5 13l8.91-.74L16 4z" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
-                <p>cert3.png</p>
-              </div>
-              <div class="cert-overlay">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <span>View Full Size</span>
-              </div>
-            </div>
-            <div class="cert-body">
-              <h3 class="cert-title">EduTourism Workshop — Infinite Learning</h3>
-            </div>
+          <div class="cert-row reveal" data-delay="2" data-img="assets/cert3.png">
+            <div class="cert-num">03</div>
+            <div class="cert-thumb-wrap"><img src="assets/cert3.png" alt="Cert 3" /><div class="cert-hover-overlay"><span>View</span></div></div>
+            <div class="cert-info"><h3 class="cert-title">EduTourism Workshop — Infinite Learning</h3><span class="cert-tag">Workshop</span></div>
+            <div class="cert-arrow">→</div>
           </div>
-
-          <!-- CERT 4 -->
-          <div class="cert-card reveal" data-delay="3" data-img="assets/cert4.png">
-            <div class="cert-img-wrap">
-              <img src="assets/cert4.png" alt="Certificate 4" class="cert-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="cert-img-fallback" style="display:none">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="16" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M4 12h24" stroke="var(--accent)" stroke-width="1.5"/></svg>
-                <p>cert4.png</p>
-              </div>
-              <div class="cert-overlay">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <span>View Full Size</span>
-              </div>
-            </div>
-            <div class="cert-body">
-              <h3 class="cert-title">Ceremony Officer — Indonesian Independence Day</h3>
-            </div>
+          <div class="cert-row reveal" data-delay="3" data-img="assets/cert4.png">
+            <div class="cert-num">04</div>
+            <div class="cert-thumb-wrap"><img src="assets/cert4.png" alt="Cert 4" /><div class="cert-hover-overlay"><span>View</span></div></div>
+            <div class="cert-info"><h3 class="cert-title">Ceremony Officer — Indonesian Independence Day</h3><span class="cert-tag">Achievement</span></div>
+            <div class="cert-arrow">→</div>
           </div>
-
-          <!-- CERT 5 -->
-          <div class="cert-card reveal" data-delay="4" data-img="assets/cert5.png">
-            <div class="cert-img-wrap">
-              <img src="assets/cert5.png" alt="Certificate 5" class="cert-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="cert-img-fallback" style="display:none">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="var(--accent)" stroke-width="1.5"/><path d="M16 10v6l4 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <p>cert5.png</p>
-              </div>
-              <div class="cert-overlay">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <span>View Full Size</span>
-              </div>
-            </div>
-            <div class="cert-body">
-              <h3 class="cert-title">Certificate of Appreciation — Batalyon Infanteri 136</h3>
-            </div>
+          <div class="cert-row reveal" data-delay="4" data-img="assets/cert5.png">
+            <div class="cert-num">05</div>
+            <div class="cert-thumb-wrap"><img src="assets/cert5.png" alt="Cert 5" /><div class="cert-hover-overlay"><span>View</span></div></div>
+            <div class="cert-info"><h3 class="cert-title">Certificate of Appreciation — Batalyon Infanteri 136</h3><span class="cert-tag">Appreciation</span></div>
+            <div class="cert-arrow">→</div>
           </div>
-
-          <!-- CERT 6 -->
-          <div class="cert-card reveal" data-delay="5" data-img="assets/cert6.png">
-            <div class="cert-img-wrap">
-              <img src="assets/cert6.png" alt="Certificate 6" class="cert-thumb"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-              <div class="cert-img-fallback" style="display:none">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 4h16a2 2 0 012 2v20a2 2 0 01-2 2H8a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="var(--accent)" stroke-width="1.5"/><path d="M11 12h10M11 17h10M11 22h6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <p>cert6.png</p>
-              </div>
-              <div class="cert-overlay">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M16 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <span>View Full Size</span>
-              </div>
-            </div>
-            <div class="cert-body">
-              <h3 class="cert-title">Mandarin Language Certificate</h3>
-            </div>
+          <div class="cert-row reveal" data-delay="5" data-img="assets/cert6.png">
+            <div class="cert-num">06</div>
+            <div class="cert-thumb-wrap"><img src="assets/cert6.png" alt="Cert 6" /><div class="cert-hover-overlay"><span>View</span></div></div>
+            <div class="cert-info"><h3 class="cert-title">Mandarin Language Certificate</h3><span class="cert-tag">Language</span></div>
+            <div class="cert-arrow">→</div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         CONTACT SECTION
-    ═══════════════════════════════════════════ -->
-    <section id="contact" class="contact-section">
-      <div class="container">
-        <div class="section-label reveal">05 — Contact</div>
-        <div class="contact-inner">
+    <!-- CONTACT -->
+    <section id="contact" class="ww-section">
+      <div class="ww-container" data-ghost="REACH">
+        <div class="ww-section-head reveal">
+          <div class="ww-line"></div>
+          <div class="ww-section-label">05 — CONTACT</div>
+          <div class="ww-line"></div>
+        </div>
+        <h2 class="ww-section-title reveal">Ready to <em>Work Together.</em></h2>
+        <div class="contact-body">
           <div class="contact-left reveal">
-            <h2 class="section-title">Ready to <span class="text-accent">Work Together.</span></h2>
             <p class="contact-desc">
               I am open to internship opportunities, collaborative projects, freelance work,
               and professional networking. Do not hesitate to reach out through any of the
               channels below.
             </p>
-            <div class="cta-block">
-              <p class="cta-text">View my resume and connect with me on LinkedIn.</p>
-              <a href="assets/resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View My Resume</a>
-            </div>
+            <a href="assets/resume.pdf" class="ww-btn ww-btn-primary" target="_blank" rel="noopener">View My Resume</a>
           </div>
           <div class="contact-right reveal">
-            <div class="contact-links">
-
-              <!-- WhatsApp -->
-              <a href="https://wa.me/6281372063939" target="_blank" rel="noopener noreferrer" class="contact-card">
-                <div class="contact-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M20.52 3.48A11.92 11.92 0 0012 0C5.37 0 0 5.37 0 12a11.93 11.93 0 001.64 6.05L0 24l6.11-1.6A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zM12 22a9.94 9.94 0 01-5.07-1.38l-.36-.22-3.74.98 1-3.65-.24-.38A9.96 9.96 0 012 12C2 6.49 6.49 2 12 2a9.95 9.95 0 019.99 10c0 5.51-4.49 10-9.99 10zm5.46-7.44c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.8-1.48-1.78-1.66-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.51-.68-.52h-.58c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.45 1.07 2.85 1.22 3.05.15.2 2.1 3.21 5.08 4.5.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z" fill="currentColor" opacity="0.9"/>
-                  </svg>
-                </div>
-                <div class="contact-info">
-                  <span class="contact-type">WhatsApp</span>
-                  <span class="contact-value">+62 813-7206-3939</span>
-                </div>
-                <svg class="contact-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-
-              <!-- Gmail -->
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=reifan.khalid.1@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-card">
-                <div class="contact-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </div>
-                <div class="contact-info">
-                  <span class="contact-type">Gmail</span>
-                  <span class="contact-value">reifan.khalid.1@gmail.com</span>
-                </div>
-                <svg class="contact-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-
-              <!-- LinkedIn -->
-              <a href="https://www.linkedin.com/in/reifan-khalid-636a613ab" target="_blank" rel="noopener noreferrer" class="contact-card">
-                <div class="contact-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </div>
-                <div class="contact-info">
-                  <span class="contact-type">LinkedIn</span>
-                  <span class="contact-value">Reifan Khalid</span>
-                </div>
-                <svg class="contact-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-
-            </div>
+            <a href="https://wa.me/6281372063939" target="_blank" class="contact-card">
+              <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20.52 3.48A11.92 11.92 0 0012 0C5.37 0 0 5.37 0 12a11.93 11.93 0 001.64 6.05L0 24l6.11-1.6A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zM12 22a9.94 9.94 0 01-5.07-1.38l-.36-.22-3.74.98 1-3.65-.24-.38A9.96 9.96 0 012 12C2 6.49 6.49 2 12 2a9.95 9.95 0 019.99 10c0 5.51-4.49 10-9.99 10zm5.46-7.44c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.8-1.48-1.78-1.66-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.51-.68-.52h-.58c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.45 1.07 2.85 1.22 3.05.15.2 2.1 3.21 5.08 4.5.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z" fill="currentColor" opacity="0.85"/></svg></div>
+              <div class="contact-text"><span class="contact-platform">WhatsApp</span><span class="contact-val">+62 813-7206-3939</span></div>
+              <span class="contact-arr">→</span>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=reifan.khalid.1@gmail.com" target="_blank" class="contact-card">
+              <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <div class="contact-text"><span class="contact-platform">Gmail</span><span class="contact-val">reifan.khalid.1@gmail.com</span></div>
+              <span class="contact-arr">→</span>
+            </a>
+            <a href="https://www.linkedin.com/in/reifan-khalid-636a613ab" target="_blank" class="contact-card">
+              <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <div class="contact-text"><span class="contact-platform">LinkedIn</span><span class="contact-val">Reifan Khalid</span></div>
+              <span class="contact-arr">→</span>
+            </a>
           </div>
         </div>
       </div>
@@ -668,14 +416,12 @@
 
   </main>
 
-  <!-- ═══════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p class="footer-copy">
-        &copy; 2025 — Reifan Khalid. Personal Skills.
-      </p>
+  <footer class="ww-footer">
+    <div class="ww-line full"></div>
+    <div class="ww-footer-inner">
+      <span class="footer-logo">よろしくおねがいします</span>
+      <span class="footer-copy">&copy; 2025 Reifan Khalid</span>
+      <span class="footer-right">IT Specialist</span>
     </div>
   </footer>
 
